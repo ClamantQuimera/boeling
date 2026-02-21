@@ -1,6 +1,8 @@
 defmodule Bowling do
   def score([]), do: 0
 
+  # Last frame: three rolls (e.g. strike then two more) or two rolls + nil
+  def score([[f, s, third] | []]) when is_number(third), do: f + s + third
   def score([[f, s, _] | []]), do: f + s
 
   def score([[10, nil] | rest]) do
